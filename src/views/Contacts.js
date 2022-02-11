@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,14 +11,16 @@ const Contacts = () => {
 
 
     const dispatch = useDispatch();
-    const [lk, setLike] = useState({
+    const [lk, setLk] = useState({
         like: "false"
     });
+
+    console.log(lk);
     const updateLike = (contact) => {
         const { id, like } = contact
 
         if (like === "false") {
-            setLike({ like: "true" })
+            setLk({ like: "true" })
 
             contacts.map((contact) => {
                 if (contact.id === id) {
@@ -25,8 +29,8 @@ const Contacts = () => {
 
             })
         }
-        else if (like === "true") {
-            setLike({ like: "false" })
+        else if (like === "true" ) {
+            setLk({ like: "false" })
 
             contacts.map((contact) => {
                 if (contact.id === id)
@@ -157,8 +161,8 @@ const Contacts = () => {
                                                                         class="text-center text-dark font-medium text-base py-5 px-2 bg-[#F3F6FF] border-b border-l border-[#E8E8E8] ">
                                                                         <button className="" onClick={ () => { updateLike(contact) } }>
                                                                             { contact.like === "true" ?
-                                                                                <img src="https://img.icons8.com/external-flat-icons-pause-08/64/000000/external-favourite-winter-flat-icons-pause-08.png" className='h-6' /> :
-                                                                                <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-favourite-music-dreamstale-lineal-dreamstale.png" className='h-6' /> }
+                                                                                <img src="https://img.icons8.com/external-flat-icons-pause-08/64/000000/external-favourite-winter-flat-icons-pause-08.png" className='h-6' alt={'image'}/> :
+                                                                                <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-favourite-music-dreamstale-lineal-dreamstale.png" className='h-6' alt={'image'} /> }
                                                                         </button>
                                                                     </td>
                                                                 </tr>

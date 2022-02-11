@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const Favourites = () => {
     const contacts = useSelector((state) => state.contacts)
@@ -7,11 +9,11 @@ const Favourites = () => {
     const [lk, setLike] = useState({
         like: "true"
     });
-
+console.log(lk)
     const updateLike = (contact) => {
         const { id, like } = contact
 
-        if (like === "true") {
+        if (like === "true" ) {
             setLike({ like: "false" })
 
             contacts.map((contact) => {
@@ -58,7 +60,7 @@ const Favourites = () => {
                                             </thead>
                                             <tbody>
                                                 { contacts.map((contact) => {
-                                                    if (contact.like == 'true') {
+                                                    if (contact.like === 'true') {
                                                         return (
                                                             <tr>
                                                                 <td
@@ -76,7 +78,7 @@ const Favourites = () => {
                                                                 <td
                                                                     class="text-center text-dark font-medium text-base py-5 px-2 bg-[#F3F6FF] border-b border-l border-[#E8E8E8] ">
                                                                     <button className="" onClick={ () => { updateLike(contact) } }>
-                                                                        <img src="https://img.icons8.com/external-flat-icons-pause-08/64/000000/external-favourite-winter-flat-icons-pause-08.png" className='h-6' />
+                                                                        <img src="https://img.icons8.com/external-flat-icons-pause-08/64/000000/external-favourite-winter-flat-icons-pause-08.png" className='h-6' alt={'image'}/>
                                                                     </button>
                                                                 </td>
                                                             </tr>
