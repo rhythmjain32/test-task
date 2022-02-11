@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 const Favourites = () => {
     const contacts = useSelector((state) => state.contacts)
-    const dispatch = useDispatch();
 
     const [lk, setLike] = useState({
         like: "true"
@@ -12,11 +10,9 @@ const Favourites = () => {
 
     const updateLike = (contact) => {
         const { id, like } = contact
-        console.log(contacts, 'cssss')
 
         if (like === "true") {
             setLike({ like: "false" })
-            // console.log(like.like, 'like')
 
             contacts.map((contact) => {
                 if (contact.id === id)
@@ -27,39 +23,6 @@ const Favourites = () => {
 
     return (
         <>
-            {/* <div className='relative space-y-20'>
-                <div className='text-3xl font-bold  text-center mt-10'>Favourites</div>
-                <div className='flex justify-center bg border-2 w-2/3 mx-auto p-6'>
-                    <div className='mt-4 w-full space-y-2'>
-                        <div className='bg-blue-200 rounded-md p-4 flex justify-around w-2/3'>
-                            <h3 className='text-xl font-semibold text-slate-500'>Name</h3>
-                            <h3 className='text-xl font-semibold text-slate-500'>Mobile No.</h3>
-                            <h3 className='text-xl font-semibold text-slate-500'>Email</h3>
-
-                        </div>
-                        { contacts.map((contact) => {
-                            if (contact.like == 'true') {
-                                return (
-                                    <div className='bg-blue-200 rounded-md p-4 flex justify-around'>
-                                        <h3 className='text-xl font-semibold text-slate-500'>{ contact.data.name }</h3>
-                                        <h3 className='text-xl font-semibold text-slate-500'>{ contact.data.mobno }</h3>
-                                        <h3 className='text-xl font-semibold text-slate-500'>{ contact.data.email }</h3>
-                                        <div className='space-x-1'>
-                                            <button className="" onClick={ () => { updateLike(contact) } }>
-                                                <img src="https://img.icons8.com/external-flat-icons-pause-08/64/000000/external-favourite-winter-flat-icons-pause-08.png" className='h-6' />
-                                            </button>
-                                        </div>
-                                    </div>
-                                )
-                            }
-
-                            return null;
-                        }
-
-                        ) }
-                    </div>
-                </div>
-            </div> */}
             <div className="flex justify-center">
                 <div class="w-full lg:w-3/4 xl:w-8/12 ">
                     <h1 className='text-center text-xl font-semibold m-4'>Favourites</h1>
@@ -119,10 +82,8 @@ const Favourites = () => {
                                                             </tr>
                                                         )
                                                     }
-
                                                     return null;
                                                 }
-
                                                 ) }
                                             </tbody>
                                         </table>

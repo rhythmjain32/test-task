@@ -5,14 +5,12 @@ import { useParams } from 'react-router-dom'
 
 const Edit = () => {
     const { id } = useParams();
-    console.log(id);
 
     const contacts = useSelector((state) => state.contacts)
     let currContact;
     contacts.map((contact) => {
         if (contact.id === id) {
             currContact = contact.data
-            console.log(contact.data)
         }
     })
 
@@ -21,14 +19,12 @@ const Edit = () => {
     })
     let name, value;
     const handleInputs = (e) => {
-        // console.log(e.target.value);
         name = e.target.name;
         value = e.target.value;
 
         setUpdate({ ...update, [name]: value });
     }
     const onSave = () => {
-        console.log(update)
         contacts.map((contact) => {
             if (contact.id === id) {
                 contact.data = update
@@ -38,33 +34,6 @@ const Edit = () => {
 
     return (
         <>
-            {/* <div className='space-y-20'>
-                <div className='text-3xl font-bold  text-center mt-10'>Edit Page</div>
-                <div className=' flex flex-col justify-center bg border-2 w-2/3 mx-auto p-6 space-y-4'>
-                    <div className='mx-auto w-1/2 flex justify-around'>
-                        <span className='text-4xl font-medium text-slate-400'>Name:</span>
-                        <input type="text" className='border-2 w-1/2 text-2xl text-center' name='name' value={ update.name } onChange={ handleInputs } />
-                    </div>
-                    <div className='mx-auto w-1/2 flex justify-around'>
-                        <span className='text-4xl font-medium text-slate-400'>Mobile No.:</span>
-                        <input type="text" className='border-2 w-1/2 text-2xl text-center' name='mobno' value={ update.mobno } onChange={ handleInputs } />
-                    </div>
-                    <div className='mx-auto w-1/2 flex justify-around'>
-                        <span className='text-4xl font-medium text-slate-400'>Email:</span>
-                        <input type="text" className='border-2 w-1/2 text-2xl text-center' name='email' value={ update.email } onChange={ handleInputs } />
-                    </div>
-                    <div className='mx-auto space-x-1'>
-                        <Link to='/'>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Cancel
-                            </button>
-                        </Link>
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={onSave}>
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </div> */}
             <div className="flex justify-center ">
                 <div class="w-full lg:w-1/4 xl:w-3/12">
                     <div class="bg-white relative rounded-lg sm:p-12 drop-shadow-lg ">
